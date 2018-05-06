@@ -11,8 +11,14 @@ build:
 	sudo chown -R 1000:1000 /var/jenkins_home
 	sudo docker run -d -p 10808:8080 -p 50000:50000 -v $(JENKINS_HOME):/var/jenkins_home -v $(DOCKER_SOCK):/var/run/docker.sock --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
+start:
+	sudo docker start $(CONTAINER_NAME)
+
 stop:
 	sudo docker stop $(CONTAINER_NAME)
+
+restart:
+	sudo docker restart $(CONTAINER_NAME)
 
 remove-all:
 	sudo docker stop $(CONTAINER_NAME)
